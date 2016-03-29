@@ -10,21 +10,20 @@ RFC 5424 date to Graylog syslog inputs:
 
 ##### UDP:
 
-    $template GRAYLOGRFC5424,"<%PRI%>%PROTOCOL-VERSION% %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%\n"
-    *.* @graylog.example.org:514;GRAYLOGRFC5424
+    *.* @graylog.example.org:514;RSYSLOG_SyslogProtocol23Format
 
 ##### TCP:
 
-    $template GRAYLOGRFC5424,"<%PRI%>%PROTOCOL-VERSION% %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%\n"
-    *.* @@graylog.example.org:514;GRAYLOGRFC5424
+    *.* @@graylog.example.org:514;RSYSLOG_SyslogProtocol23Format
 
 (The difference between UDP and TCP is using `@` instead of `@@` as target descriptor.)
 
-Alternatively, the rsyslog built-in template [RSYSLOG_SyslogProtocol23Format](http://www.rsyslog.com/doc/v5-stable/configuration/templates.html#string-based-templates>) sends log messages in the same format as above. This exists in rsyslog versions of at least 5.10 or later.
+If you're using a very old version of rsyslog (versions before rsyslog 5.10) which doesn't provide the built-in [RSYSLOG_SyslogProtocol23Format](http://www.rsyslog.com/doc/v5-stable/configuration/templates.html#string-based-templates>) template, you can create a custom message template.
 
 The UDP examples above becomes:
 
-    *.* @graylog.example.org:514;RSYSLOG_SyslogProtocol23Format
+    $template GRAYLOGRFC5424,"<%PRI%>%PROTOCOL-VERSION% %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%\n"
+    *.* @graylog.example.org:514;GRAYLOGRFC5424
 
 ### syslog-ng
 
