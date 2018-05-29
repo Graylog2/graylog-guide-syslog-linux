@@ -1,6 +1,12 @@
 ## Sending syslog from Linux systems into Graylog
 
-The two most popular syslog deamons (the programs that run in the background to accept and write or forward logs) are *rsyslog* and *syslog-ng*. One of these will most likely be running on your Linux distribution. (Please refer to your distribution documentation if you are unsure)
+The two most popular syslog deamons (the programs that run in the background to accept and write or forward logs) are [rsyslog](https://www.rsyslog.com/) and [syslog-ng](https://syslog-ng.com/). One of these will most likely be running on your Linux distribution.
+
+Please refer to the documentation of your distribution if you are not sure about this.
+
+### ⚠️ Warning ⚠️
+
+**These instructions configure rsyslog and syslog-ng to send log messages _unencrypted_ over the network. This is generally not recommended on public networks.**
 
 ### rsyslog
 
@@ -20,7 +26,7 @@ RFC 5424 date to Graylog syslog inputs:
 
 The above configuration should be placed as new file in `/etc/rsyslog.d/` and rsyslog should be restarted. In addition the port 514 on the Graylog server need to be reachable from the sending server.  
 
-### old rsyslog
+### Old rsyslog
 If you're using a very old version of rsyslog (versions before rsyslog 5.10) which doesn't provide the built-in [RSYSLOG_SyslogProtocol23Format](http://www.rsyslog.com/doc/v5-stable/configuration/templates.html#string-based-templates>) template, you can create a custom message template.
 
 For **UDP** this becomes:
