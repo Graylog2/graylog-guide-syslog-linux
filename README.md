@@ -24,7 +24,7 @@ RFC 5424 date to Graylog syslog inputs:
 
 (The difference between UDP and TCP is using `@` instead of `@@` as target descriptor.)
 
-The above configuration should be placed as new file in `/etc/rsyslog.d/` and rsyslog should be restarted. In addition the port 514 on the Graylog server need to be reachable from the sending server.  
+The above configuration should be placed as new file ending in .conf in `/etc/rsyslog.d/` and rsyslog should be restarted. In addition the port 514 on the Graylog server need to be reachable from the sending server.  
 
 ### Old rsyslog
 If you're using a very old version of rsyslog (versions before rsyslog 5.10) which doesn't provide the built-in [RSYSLOG_SyslogProtocol23Format](http://www.rsyslog.com/doc/v5-stable/configuration/templates.html#string-based-templates>) template, you can create a custom message template.
