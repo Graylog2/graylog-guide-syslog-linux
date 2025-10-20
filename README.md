@@ -1,3 +1,8 @@
+# This guide has been archived.
+
+The information in this guide is very old and likely no longer applicable to current versions of Graylog.
+Please take that into account when reading the following content.
+
 ## Sending syslog from Linux systems into Graylog
 
 The two most popular syslog deamons (the programs that run in the background to accept and write or forward logs) are [rsyslog](https://www.rsyslog.com/) and [syslog-ng](https://syslog-ng.com/). One of these will most likely be running on your Linux distribution.
